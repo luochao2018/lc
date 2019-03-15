@@ -1,0 +1,127 @@
+*注
+
+1.表单:table.json
+
+PKID: 主键,
+FORMID: 表单的id,
+
+ID: id,
+TITLE: 标题,
+PID: 父id(联动表需要,多个id通过逗号分离,这里在后台处理,不存数据库),
+SID: 子id(联动表需要,多个id通过逗号分离,这里在后台处理,不存数据库),
+WIDTH: 宽度比列(表单有多张表时,横向展示需要),
+HEIGHT: 高度比列(表单有多张表时,纵向展示需要),
+CHECKBOX: 是否显示复选框(0/null/false为否,其余为是,下同),
+POSITION: 方向(1横向,否则纵向),
+SORT: 排序(多张表时需要),
+IMPORTANTCOLOR: 重要提示的背景色,
+FIRSTLOAD: 首次是否加载,
+FUNCTIONCODE: 事务码(用于查询数据),
+ONDBLCLICKROW: 是否锁定双击功能,
+QUERYNUM: 一行查询条件的个数,
+FORMNUM: 一行编辑条件的个数
+
+
+2.数据列:column.json
+
+PKID: 主键,
+
+ROWNUM: 维度(多维度需要),
+FILED: 字段名,
+TITLE: 标题,
+COLNUM: 列号,
+FROZENCOLUMNS: 是否冻结(1是,下同),
+WIDTH: 列宽,
+HALIGN: 标题位置,
+ALIGN: 数据位置,
+COLSPAN: 合并列数(多维度标题合并需要),
+ROWSPAN: 合并行数(多维度标题合并需要),
+SORTABLE: 是否排序(按列排序需要),
+EXPORT: 是否导出,
+DISPLAY: 是否显示,
+REQUIRED: 是否必填(编辑时需要)
+
+
+
+
+3.查询输入框/编辑输入框:condion.json/formT.json
+(一张表,通过IDENTITY来分类,condion是1,formT是2)
+
+PKID: 主键,
+IDENTITY:标识(用于区分查询和编辑),
+
+FILED: 字段名,
+NAME: 属性名,
+TITLE: 标题,
+SORT: 排序,
+DISPLAY: 是否显示,
+LINKBYNAME: 联动控制的属性名,
+LINKNAME: 被联动属性名,
+LINKURL: 联动返回值(接口或者sql),
+BANBYNAME: 禁用属性名,
+BANNAME: 被禁用属性名,
+BANVALUE: 释放禁用条件("value":等于,"*value*":包含字符串,"value*":以字符串开头,"*value":以字符串结尾),
+DEFAULT: 默认值,
+TYPE: 输入框类型(关联condition_type.json的ID),
+VALUE: 输入框内容(下拉框需要,关联condition_value.json的FILED),
+RELATION: 与条件的关系
+
+
+
+4.输入框类型:condition_type.json
+
+PKID: 主键,
+
+ID: 编号,
+TITLE: 标题,
+TYPE: 类型,
+EDITABLE: 是否可编辑,
+MULTIPLE: 是否多选,
+INPUT: 输入框的定义
+
+
+
+5.输入框内容:condition_value.json
+
+PKID: 主键,
+
+FILED: 字段,
+TITLE: 标题,
+VALUE: 值,
+SORT: 排序
+
+
+
+6.菜单/工具栏:menu.json/toolbar.json
+(一张表,通过IDENTITY来分类,menu是1,toolbar是2)
+
+PKID: 主键,
+IDENTITY:标识(用于区分菜单和工具栏),
+
+ID: id,
+TITLE: 标题,
+SORT: 排序,
+AUTH: 权限,
+ICONCLS: 图标,
+DISABLED: 是否隐藏,
+HREF: 链接,
+ONCLICK: 事件
+
+
+=======================================
+
+7.配置表(前端配置)
+
+GETFORMBYCODE = {
+    CODE1: [//访问界面code码
+       {
+           TABLEID:"可靠性部件清单",//table.json的PKID
+           COLUMNID:[],//column.json的PKID
+           CONDIONID:[],//condion.json的PKID
+           FORMTID:[],//formT.json的PKID
+           MENUID:[],//menu.json的PKID
+           TOOLBARID:[]//toolbar.json的PKID
+       }
+   ]
+}
+

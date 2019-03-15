@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="../js/common/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery-easyui-1.5.5.4/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-easyui-1.5.5.4/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../js/excle/example.js"></script>
+<link type="text/css" rel="stylesheet" href="../js/jquery-easyui-1.5.5.4/themes/bootstrap/easyui.css"/>
+<link type="text/css" rel="stylesheet" href="../js/jquery-easyui-1.5.5.4/themes/icon.css"/>
+<link type="text/css" rel="stylesheet" href="../css/common_style.css"/>
+<body>
+
+<!--顶部-->
+<div id="top" class="easyui-panel" style="padding:5px;height: 42px">
+    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-home'">Home</a>
+    <a href="#" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-help'">Help</a>
+    <a href="#" class="easyui-menubutton" data-options="menu:'#mm3'">About</a>
+    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'"
+       onclick="$('#w').window('open');">筛选</a>
+</div>
+
+<!--暂未做-->
+<div id="mm2">
+    <div>Help</div>
+    <div>Update</div>
+    <div>About</div>
+</div>
+
+<!--图标-->
+<div id="mm3" class="dragitem" style="background:#f0f0f0;padding:10px;text-align:left">
+    <img src="http://www.jeasyui.com/images/logo1.png" style="width:150px;height:50px">
+    <p style="font-size:14px;color:#444;">Try jQuery EasyUI to build your modern, interactive, javascript
+        applications.</p>
+</div>
+
+<!--查询条件-->
+<div id="w" class="easyui-window" title="查询条件" data-options="iconCls:'icon-search'" closed="true"
+     style="width:600px;height:300px;padding:5px;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'east',split:true" style="width:230px" id="search-message">
+            请从左侧框选择条件,点击查询按钮,执行筛选条件,若关闭后,请点击筛选按钮,可再次执行查询功能
+        </div>
+        <div data-options="region:'center'" style="padding:10px;" id="search-condition">
+            <form id="form-search">
+                <table id="search-table">
+                </table>
+            </form>
+        </div>
+        <div data-options="region:'south',border:false" style="text-align:right;height: 32px">
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="choice(2);"
+               data-options="plain:true,iconCls:'icon-ok'">查询</a>
+        </div>
+    </div>
+</div>
+
+<!--弹窗部分_导出-->
+<div class="easyui-dialog" id="div-export" title="导出手工模板" closed="true" style="width: 350px;height: 150px">
+    <form id="form-export" name="form-export" enctype="multipart/form-data">
+        <table style="margin: auto;height: 110px">
+            <tr>
+                <td>导出:
+                    <input type="radio" name="export" value=1 checked>数据
+                    <input type="radio" name="export" value=0>模板
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <a class="easyui-linkbutton" onclick="doExport();"
+                       data-options="plain:true,iconCls:'icon-ok'">确定</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<!--弹窗部分_导入-->
+<div class="easyui-dialog" id="div-import" title="导入excle数据" closed="true" style="width: 350px;height: 150px">
+    <form id="form-import" name="form-import" enctype="multipart/form-data">
+        <table style="margin: auto;height: 110px">
+            <tr>
+                <td>
+                    <input class="easyui-filebox" id="file" name="file"
+                           data-options="required:true,
+                           buttonText:'请选择要导入的文件',
+                           accept:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel',
+                           buttonAlign:'left'"
+                           style="width:300px;height: 24px">
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center">
+                    <a class="easyui-linkbutton" onclick="doImport();"
+                       data-options="plain:true,iconCls:'icon-ok'">确定</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<!--表格部分-->
+<table id="dg"></table>
+<!--菜单-->
+<div id="menu" class="easyui-menu" style="display: none"></div>
+
+<!--弹窗部分_浏览-->
+<div class="easyui-dialog" id="div-dg" title="查看" closed="true" style="width: 350px;height: 180px">
+    <form id="form-dg" name="form-dg" enctype="multipart/form-data">
+        <table style="margin: auto;height: 140px">
+            <tr>
+                <th>TEST:</th>
+                <td><input class="easyui-textbox test" id="dg_test" name="test" data-options="required:true"
+                           style="width:176px;height: 24px"/></td>
+            </tr>
+            <tr>
+                <th>NAME:</th>
+                <td><input class="easyui-combobox name" id="dg_name" name="name" data-options="required:true"
+                           style="width:176px;height: 24px"/></td>
+            </tr>
+            <tr>
+                <th>AGE:</th>
+                <td><input class="easyui-datebox age" id="dg_age" name="age" data-options="required:true"
+                           style="width:176px;height: 24px"/></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <a class="easyui-linkbutton" onclick="doImport();"
+                       data-options="plain:true,iconCls:'icon-ok'">确定</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

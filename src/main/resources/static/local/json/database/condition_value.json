@@ -1,0 +1,24 @@
+{
+  "可靠性部件清单":[],
+  "APU日报":[
+    {"FILED":"JXEJ","TITLE":"机型二级","VALUE":"机型二级","SORT":1},
+    {"FILED":"JXEJ","TITLE":"一级机型","VALUE":"一级机型","SORT":1},
+    {"FILED":"JXEJ","TITLE":"机型","VALUE":"机型","SORT":1},
+    {"FILED":"JXEJ","TITLE":"二机型级","VALUE":"二机型级","SORT":1},
+    {"FILED":"JX","TITLE":"机型","VALUE":"机型","SORT":1},
+    {"FILED":"JX","TITLE":"机型2","VALUE":"机型2","SORT":1},
+    {"FILED":"APUJH","TITLE":"APU件号","VALUE":"APU件号","SORT":1}
+  ],
+  "CMP维修方案更改":[],
+  "不正常事件":[
+    {"FILED":"JX","TITLE":"机型","VALUE":"机型","SORT":1},
+    {"FILED":"JH","TITLE":"机号","VALUE":"机号","SORT":1}
+  ],
+  "不正常事件2":[
+    {"FILED":"JX","TITLE":"机型","VALUE":"机型","SORT":1}
+  ],
+  "不正常事件3":[
+    {"FILED":"JX","TITLE":"机型","VALUE":"机型","SORT":1},
+    {"FILED":"JH","TITLE":"机号","VALUE":"机号","SORT":1}
+  ]
+}

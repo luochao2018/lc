@@ -1,0 +1,14 @@
+
+
+filed:字段名
+name:变量名
+title:描述
+sort:排序
+display:是否显示(1显示)
+banNameBy:控制禁用的变量名
+banName:被禁用的变量名
+banValue:解锁的条件("value":等于,"*value*":包含字符串,"value*":以字符串开头,"*value":以字符串结尾)
+default:默认值
+type:输入框类型
+value:下拉框值域
+relation:字段与输入值的关系

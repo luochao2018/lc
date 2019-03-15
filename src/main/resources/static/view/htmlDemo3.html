@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可靠性表单设计模板</title>
+    <script>
+        function test(str) {
+            alert(str)
+        }
+    </script>
+</head>
+<script type="text/javascript" src="../js/common/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../js/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="../js/jquery-easyui-1.5.5.4/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-easyui-1.5.5.4/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../js/excle/config.js"></script>
+<script type="text/javascript" src="../js/excle/htmlDemo3.js"></script>
+<link type="text/css" rel="stylesheet" href="../js/jquery-easyui-1.5.5.4/themes/bootstrap/easyui.css"/>
+<link type="text/css" rel="stylesheet" href="../js/jquery-easyui-1.5.5.4/themes/icon.css"/>
+<link type="text/css" rel="stylesheet" href="../css/common_style.css"/>
+
+<body>
+
+<!--导出-->
+<div id="div-export" class="easyui-dialog" title="导出手工模板" closed="true" style="width: 350px;height: 150px">
+    <form id="form-export" name="form-export" enctype="multipart/form-data">
+        <table style="margin: auto;height: 110px">
+            <tr>
+                <td>
+                    <input type="radio" name="export" value=1 checked>数据
+                    <input type="radio" name="export" value=0>模板
+                </td>
+            </tr>
+            <tr>
+                <td align="center" id="exportA" class="table-export"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<!--导入-->
+<div id="div-import" class="easyui-dialog" title="导入excle数据" closed="true" style="width: 350px;height: 150px">
+    <form id="form-import" name="form-import" enctype="multipart/form-data">
+        <table style="margin: auto;height: 110px">
+            <tr>
+                <td>
+                    <input class="easyui-filebox" id="file" name="file"
+                           data-options="required:true,
+                           buttonText:'请选择要导入的文件',
+                           accept:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel',
+                           buttonAlign:'left'"
+                           style="width:300px;height: 24px">
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center" id="importA" class="table-import"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<!--主表_查询-->
+<div id="div-search">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center',fit:true" id="search">
+            <form id="form-search">
+                <table id="table-search">
+                </table>
+            </form>
+            <div style="text-align:center;height: 32px" class="table-search"></div>
+        </div>
+    </div>
+</div>
+
+<!--子表_查询-->
+<div id="div-search2" class="easyui-dialog" closed="true">
+    <form id="form-search2">
+        <div>
+            <table id="table-search2" style="margin: auto;">
+            </table>
+        </div>
+        <div style="text-align:center;height: 32px" class="table-search2"></div>
+    </form>
+</div>
+
+<!--编辑表单-->
+<div id="div-dg" class="easyui-dialog" closed="true">
+    <form id="form-dg" enctype="multipart/form-data">
+        <div style="display:none;">
+            主键：<input class="easyui-textbox" id="PKID" name="PKID" data-options=""/>
+        </div>
+        <div>
+            <table style="margin: auto;" id="table-dg">
+            </table>
+        </div>
+        <div style="text-align:center;height: 32px" class="table-dg"></div>
+    </form>
+</div>
+
+<!--主表-->
+<div id="datagrid"></div>
+
+<!--联动表-->
+<div id="datagrid2"></div>
+
+<!--菜单-->
+<div id="menu" class="easyui-menu" style="display: none"></div>
+
+</body>
+</html>

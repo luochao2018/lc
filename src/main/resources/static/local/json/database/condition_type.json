@@ -1,0 +1,10 @@
+[
+  {"ID": 1,"TITLE": "文本框","TYPE": "textbox","EDITABLE": 0,"MULTIPLE": 0, "INPUT": "<input class='easyui-textbox' id='@@ID' name='@@NAME' data-options='' style='width:165px;height:22px'>"},
+  {"ID": 2,"TITLE": "下拉框","TYPE": "combobox","EDITABLE": 0,"MULTIPLE": 0, "INPUT": "<input class='easyui-combobox' id='@@ID' name='@@NAME' data-options=''  style='width:165px;height:22px'>"},
+  {"ID": 3,"TITLE": "日期框","TYPE": "datebox","EDITABLE": 0,"MULTIPLE": 0,"INPUT": "<input class='easyui-datebox' id='@@ID' name='@@NAME' data-options=''  style='width:165px;height:22px'>"},
+  {"ID": 4,"TITLE": "文本框(必填)", "TYPE": "textbox", "EDITABLE": 0, "MULTIPLE": 0, "INPUT": "<input class='easyui-textbox' id='@@ID' name='@@NAME' data-options='required:true'  style='width:165px;height:22px'>"},
+  {"ID": 5, "TITLE": "下拉框(必填)", "TYPE": "combobox", "EDITABLE": 0, "MULTIPLE": 0, "INPUT": "<input class='easyui-combobox' id='@@ID' name='@@NAME' data-options='required:true'  style='width:165px;height:22px'>"},
+  {"ID": 6, "TITLE": "日期框(必填)", "TYPE": "datebox", "EDITABLE": 0, "MULTIPLE": 0, "INPUT": "<input class='easyui-datebox' id='@@ID' name='@@NAME' data-options='required:true'  style='width:165px;height:22px'>"},
+  {"ID": 7, "TITLE": "文本域", "TYPE": "textarea","ROWS":3.5, "EDITABLE": 0, "MULTIPLE": 0, "INPUT": "<textarea rows='6' cols='74' id='@@ID' name='@@NAME'></textarea>"},
+  {"ID": 8, "TITLE": "下拉表", "TYPE": "combogrid","ROWS":"", "EDITABLE": 0, "MULTIPLE": 0, "INPUT": "<input class='easyui-combogrid' id='@@ID' name='@@NAME' data-options=''  style='width:165px;height:22px'>"}
+]

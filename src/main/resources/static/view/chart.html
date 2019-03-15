@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/common/jquery-1.11.1.min.js"></script>
+    <script src="../js/common/context.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/context.standalone.css">
+    <script>
+        $(document).ready(function () {
+            context.init(
+                {
+                    preventDoubleContext: false,
+                    above: 'auto',
+                }
+            );
+            context.settings(
+                {
+                    compress: true
+                }
+            );
+            context.attach('#menu', [//attach为绑定的dom对象，可以使用类名或id，例如'.classname'
+                {
+                    header: 'Compressed Menu'
+                },
+                {
+                    text: 'Back',
+                    href: '#'
+                },
+                {
+                    text: 'Reload',
+                    href: '#'
+                },
+                {
+                    divider: true
+                },
+                {
+                    text: 'Save As',
+                    href: '#'
+                },
+                {
+                    text: 'Print',
+                    href: '//www.baidu.com',//绝对路径
+                    target: '_ blank'
+                },
+                {
+                    text: 'View Page Source',
+                    href: '#'
+                },
+                {
+                    text: 'View Page Info',
+                    href: '#'
+                },
+                {
+                    divider: true
+                },
+                {
+                    text: 'Inspect Element',
+                    href: '#'
+                },
+                {
+                    divider: true
+                },
+                {
+                    text: 'Disable This Menu',
+                    action: function (e) {
+                        e.preventDefault();
+                        context.destroy('html');
+                        alert('htmlcontextual menu destroyed!');
+
+                    }
+                },
+                {
+                    text: 'Donate?', action: function (e) {
+                        e.preventDefault();
+                        $('#donate').submit();
+                    }
+                }
+            ]);
+        });
+    </script>
+</head>
+<body>
+
+<div style="width: 100px;height: 100px;background-color: #0092DC" id="menu"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+[
+  {
+    "pkid": 1,
+    "title": "文本框",
+    "type": "textbox",
+    "editable": 0,
+    "multiple": 0,
+    "input": "<input class='easyui-textbox' id='@@ID' name='@@NAME' data-options='' style='width:165px;height:22px'>"
+  },
+  {
+    "pkid": 2,
+    "title": "下拉框",
+    "type": "combobox",
+    "editable": 0,
+    "multiple": 0,
+    "input": "<input class='easyui-combobox' id='@@ID' name='@@NAME' data-options=''  style='width:165px;height:22px'>"
+  },
+  {
+    "pkid": 3,
+    "title": "日期框",
+    "type": "datebox",
+    "editable": 0,
+    "multiple": 0,
+    "input": "<input class='easyui-datebox' id='@@ID' name='@@NAME' data-options=''  style='width:165px;height:22px'>"
+  },
+  {
+    "pkid": 4,
+    "title": "文本框(必填)",
+    "type": "textbox",
+    "editable": 0,
+    "multiple": 0,
+    "input": "<input class='easyui-textbox' id='@@ID' name='@@NAME' data-options='required:true'  style='width:165px;height:22px'>"
+  },
+  {
+    "pkid": 5,
+    "title": "下拉框(必填)",
+    "type": "combobox",
+    "editable": 0,
+    "multiple": 0,
+    "input": "<input class='easyui-combobox' id='@@ID' name='@@NAME' data-options='required:true'  style='width:165px;height:22px'>"
+  },
+  {
+    "pkid": 6,
+    "title": "日期框(必填)",
+    "type": "datebox",
+    "editable": 0,
+    "multiple": 0,
+    "input": "<input class='easyui-datebox' id='@@ID' name='@@NAME' data-options='required:true'  style='width:165px;height:22px'>"
+  }
+]

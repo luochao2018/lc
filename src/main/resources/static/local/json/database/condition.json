@@ -1,0 +1,32 @@
+{
+  "可靠性部件清单":[],
+  "APU日报":[
+    {"FILED":"ZGDW","NAME":"zgdw","TITLE":"执管单位","SORT":1,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":8,"VALUE":"","RELATION":"="},
+    {"FILED":"JXYJ","NAME":"jxyj","TITLE":"机型一级","SORT":2,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":1,"VALUE":"","RELATION":"="},
+    {"FILED":"JXEJ","NAME":"jxej","TITLE":"机型二级","SORT":3,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"jx","LINKURL":"机型","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":2,"VALUE":"JXEJ","RELATION":"="},
+    {"FILED":"JX","NAME":"jx","TITLE":"机型","SORT":4,"DISPLAY":1,"LINKBYNAME":"jxej","LINKNAME":"","LINKURL":"机型","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":2,"VALUE":"JX","RELATION":"="},
+    {"FILED":"JH","NAME":"jh","TITLE":"机号","SORT":5,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":1,"VALUE":"","RELATION":"="},
+    {"FILED":"APUJH","NAME":"apujh","TITLE":"APU件号","SORT":6,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":2,"VALUE":"APUJH","RELATION":"="},
+    {"FILED":"XH","NAME":"xh","TITLE":"序号","SORT":7,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":1,"VALUE":"","RELATION":"="},
+    {"FILED":"FJRQ","NAME":"begin","TITLE":"飞机日期","SORT":8,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":3,"VALUE":"","RELATION":">="},
+    {"FILED":"FJRQ","NAME":"end","TITLE":"~","SORT":9,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":3,"VALUE":"","RELATION":"<="}
+  ],
+  "CMP维修方案更改":[],
+  "不正常事件":[
+    {"FILED":"FSRQ","NAME":"begin","TITLE":"发生日期","SORT":1,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":3,"VALUE":"","RELATION":">="},
+    {"FILED":"FSRQ","NAME":"end","TITLE":"至","SORT":2,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":3,"VALUE":"","RELATION":"<="},
+    {"FILED":"JX","NAME":"jx","TITLE":"机型","SORT":3,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":2,"VALUE":"JX","RELATION":"="},
+    {"FILED":"JH","NAME":"jh","TITLE":"机号","SORT":4,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":2,"VALUE":"JH","RELATION":"="}
+  ],
+  "不正常事件2":[
+    {"FILED":"JX","NAME":"jx","TITLE":"机型","SORT":3,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":2,"VALUE":"JX","RELATION":"="}
+  ],
+  "不正常事件3":[
+    {"FILED":"JX","NAME":"jx","TITLE":"机型","SORT":3,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":2,"VALUE":"JX","RELATION":"="},
+    {"FILED":"JH","NAME":"jh","TITLE":"机号","SORT":4,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":2,"VALUE":"JH","RELATION":"="}
+  ],
+  "图表":[
+    {"FILED":"JX","NAME":"jx","TITLE":"机型","SORT":3,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":2,"VALUE":"JX","RELATION":"="},
+    {"FILED":"JH","NAME":"jh","TITLE":"机号","SORT":4,"DISPLAY":1,"LINKBYNAME":"","LINKNAME":"","LINKURL":"","BANBYNAME":"","BANNAME":"","BANVALUE":"","DEFAULT":"","TYPE":2,"VALUE":"JH","RELATION":"="}
+  ]
+}

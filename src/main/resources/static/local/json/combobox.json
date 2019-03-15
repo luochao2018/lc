@@ -1,0 +1,15 @@
+{
+  "TABLE":[
+    {"ID":"1","DATABASE": "dm_local", "TABLE": "student_copy", "COLUMN": "BIRTH,NAME,AGE", "TEXT": "飞机"},
+    {"ID":"2","DATABASE": "dm_local", "TABLE": "student_copy1", "COLUMN": "BIRTH,NAME,AGE", "TEXT": "飞机2"},
+    {"ID":"3","DATABASE": "dm_local", "TABLE": "student_copy1", "COLUMN": "BIRTH,NAME,AGE", "TEXT": "飞机3"},
+    {"ID":"4","DATABASE": "dm_local", "TABLE": "student_copy1", "COLUMN": "BIRTH,NAME,AGE", "TEXT": "飞机4"},
+    {"ID":"5","DATABASE": "dm_local", "TABLE": "student_copy1", "COLUMN": "BIRTH,NAME,AGE", "TEXT": "飞机5"},
+    {"ID":"6","DATABASE": "dm_local", "TABLE": "student_copy1", "COLUMN": "BIRTH,NAME,AGE", "TEXT": "飞机6"},
+    {"ID":"7","DATABASE": "dm_local", "TABLE": "student_copy1", "COLUMN": "BIRTH,NAME,AGE", "TEXT": "飞机7"},
+    {"ID":"8","DATABASE": "dm_local", "TABLE": "student_copy1", "COLUMN": "BIRTH,NAME,AGE", "TEXT": "飞机8"},
+    {"ID":"9","DATABASE": "dm_local", "TABLE": "student_copy1", "COLUMN": "BIRTH,NAME,AGE", "TEXT": "通用测试样列_2019_预算1"},
+    {"ID":"10","DATABASE": "dm_local", "TABLE": "student_copy1", "COLUMN": "BIRTH,NAME,AGE", "TEXT": "测试统计_luochao"}
+  ],
+  "OTHER":""
+}

@@ -1,0 +1,29 @@
+.th {
+    background: #D4D4D4;
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+    text-align: right;
+}
+
+.td {
+    border:solid #ccc 1px;
+    background: #fdfdfd;
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    text-align: left;
+}
+
+.must {
+    color: #c9302c;
+}
+
+/**
+    数据列表
+ */
+.datagrid-header-row td {
+    background-color: #4D4D4B;
+    font-weight:bold;
+    color:#ffffff;
+}

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bireturn.excle.dao.mapper.BaseMapper">
+
+    <select id="getColumnsByTable" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT COLUMN_COMMENT, COLUMN_NAME
+        FROM information_schema.`COLUMNS`
+        WHERE TABLE_NAME=#{TABLE} AND TABLE_SCHEMA=#{DATABASE} AND COLUMN_NAME REGEXP #{COLUMN}
+    </select>
+
+    <select id="getInformation2" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.*,b.*
+        FROM dm_configuration.`column` a,dm_configuration.`table` b
+        <where>
+            a.TABLE_ID = b.PKID
+            <if test="FORM_PKID != null and '' != FORM_PKID">
+                and b.PKID = #{FORM_PKID}
+            </if>
+        </where>
+        ORDER BY a.TABLE_ID,a.SORT
+    </select>
+
+    <select id="getTable" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT b.*
+        FROM dm_configuration.`table` b
+        <where>
+            <if test="FORM_PKID != null and '' != FORM_PKID">
+                and b.PKID = #{FORM_PKID}
+            </if>
+        </where>
+        GROUP BY b.PKID
+    </select>
+
+    <select id="getDisplay" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.*,b.*
+        FROM dm_configuration.`column` a,dm_configuration.`table` b
+        WHERE a.TABLE_ID = b.PKID AND a.DISPLAY=1 AND b.PKID = #{FORM_PKID}
+        ORDER BY a.SORT
+    </select>
+
+    <select id="getCondition" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.*,b.*
+        FROM dm_configuration.`column` a,dm_configuration.`table` b
+        WHERE a.TABLE_ID = b.PKID AND a.`CONDITION`=1 AND b.PKID = #{FORM_PKID}
+        ORDER BY a.SORT
+    </select>
+
+    <select id="getExport" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.*,b.*
+        FROM dm_configuration.`column` a,dm_configuration.`table` b
+        WHERE a.TABLE_ID = b.PKID AND a.EXPORT=1 AND b.PKID = #{FORM_PKID}
+        ORDER BY a.SORT
+    </select>
+
+    <select id="selectSQL2" resultType="com.bireturn.excle.dao.entity.BaseObject">
+        ${sql}
+    </select>
+
+    <select id="selectSQL" resultType="com.alibaba.fastjson.JSONObject">
+        ${sql}
+    </select>
+
+    <insert id="insertSQL" parameterType="string">
+        ${sql}
+    </insert>
+
+    <update id="updateSQL" parameterType="string">
+        ${sql}
+    </update>
+
+    <delete id="deleteSQL" parameterType="string">
+        ${sql}
+    </delete>
+
+    <select id="selectPageList" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT *
+        FROM dm_local.student_copy a
+        <where>
+            <if test="test != null and '' != test">
+                and a.TEST = #{test}
+            </if>
+            <if test="name != null and '' != name">
+                and a.`NAME` =#{name}
+            </if>
+            <if test="age != null and '' != age">
+                and a.AGE = #{age}
+            </if>
+        </where>
+        LIMIT #{page},#{rows}
+    </select>
+
+    <select id="selectPageSize" resultType="integer">
+        SELECT COUNT(*)
+        FROM dm_local.student_copy a
+        <where>
+            <if test="test != null and '' != test">
+                and a.TEST = #{test}
+            </if>
+            <if test="name != null and '' != name">
+                and a.`NAME` =#{name}
+            </if>
+            <if test="age != null and '' != age">
+                and a.AGE = #{age}
+            </if>
+        </where>
+    </select>
+
+    <select id="getInfoByInfoId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.*
+        FROM dm_config.ws_report_info a
+        WHERE a.PKID = #{infoId}
+    </select>
+
+    <select id="getTableByInfoId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.*
+        FROM dm_config.ws_report_sections a
+        WHERE a.INFO_ID = #{infoId}
+        ORDER BY a.SORT
+    </select>
+
+    <select id="getTableByTableId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.*
+        FROM dm_config.ws_report_sections a
+        WHERE a.PKID = #{tableId}
+        ORDER BY a.SORT
+    </select>
+
+    <select id="getPidByTableId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT b.ID PID
+        FROM dm_config.ws_report_rel_all a,dm_config.ws_report_sections b
+        WHERE a.LINK_TABLE_ID = #{tableId}
+        AND a.TABLE_ID = b.PKID
+        AND a.TABLE_ID IS NOT NULL
+        AND (a.`DISABLE` != 1 OR a.`DISABLE` IS NULL)
+        ORDER BY a.SORT
+    </select>
+
+    <select id="getSidByTableId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT b.ID SID
+        FROM dm_config.ws_report_rel_all a,dm_config.ws_report_sections b
+        WHERE a.TABLE_ID = #{tableId}
+        AND a.LINK_TABLE_ID = b.PKID
+        AND a.LINK_TABLE_ID IS NOT NULL
+        AND (a.`DISABLE` != 1 OR a.`DISABLE` IS NULL)
+        ORDER BY a.SORT
+    </select>
+
+    <select id="getColspanByTableId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.FILED COLSPAN
+        FROM dm_config.ws_report_columns a,dm_config.ws_report_rel_all b
+        WHERE a.PKID = b.COLUMN_ID
+        AND b.TABLE_ID = #{tableId}
+        AND b.IFCOLSPAN = 1
+        AND (a.`DISABLE` != 1 OR a.`DISABLE` IS NULL)
+        AND (b.`DISABLE` != 1 OR b.`DISABLE` IS NULL)
+        ORDER BY b.SORT
+    </select>
+
+    <select id="getRowspanByTableId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.FILED ROWSPAN
+        FROM dm_config.ws_report_columns a,dm_config.ws_report_rel_all b
+        WHERE a.PKID = b.COLUMN_ID
+        AND b.TABLE_ID = #{tableId}
+        AND b.IFROWSPAN = 1
+        AND (a.`DISABLE` != 1 OR a.`DISABLE` IS NULL)
+        AND (b.`DISABLE` != 1 OR b.`DISABLE` IS NULL)
+        ORDER BY b.SORT
+    </select>
+
+    <select id="getDisplayColumnByTableId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.*,b.*
+        FROM dm_config.ws_report_columns a,dm_config.ws_report_rel_all b
+        WHERE  a.PKID = b.COLUMN_ID
+        AND b.TABLE_ID = #{tableId}
+        AND (a.`DISABLE` != 1 OR a.`DISABLE` IS NULL)
+        AND (b.`DISABLE` != 1 OR b.`DISABLE` IS NULL)
+        ORDER BY b.SORT
+    </select>
+
+    <select id="getInputTypeByType" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.*
+        FROM dm_config.ws_report_code_input a
+        WHERE  a.PKID = #{type}
+    </select>
+
+    <select id="getInputValueByValue" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT DISTINCT a.TITLE,a.`VALUE`
+        FROM dm_config.ws_report_input_value a
+        WHERE  a.FILED = #{value}
+        ORDER BY a.SORT
+    </select>
+
+    <select id="getExportColumnByTableId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.*,b.*
+        FROM dm_config.ws_report_columns a,dm_config.ws_report_rel_all b
+        WHERE  a.PKID = b.COLUMN_ID
+        AND b.TABLE_ID = #{tableId}
+        AND (a.`NOEXPORT` != 1 OR a.`NOEXPORT` IS NULL)
+        AND (b.`NOEXPORT` != 1 OR b.`NOEXPORT` IS NULL)
+        ORDER BY b.SORT
+    </select>
+
+    <select id="getInputByTableId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.*,b.*
+        FROM dm_config.ws_report_input a,dm_config.ws_report_rel_all b
+        WHERE  a.PKID = b.INPUT_ID
+        AND a.IDENTITY = #{identity}
+        AND b.TABLE_ID = #{tableId}
+        AND (a.`DISABLE` != 1 OR a.`DISABLE` IS NULL)
+        AND (b.`DISABLE` != 1 OR b.`DISABLE` IS NULL)
+        ORDER BY b.SORT
+    </select>
+
+    <select id="getOnclickByTableId" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT a.*,b.*
+        FROM dm_config.ws_report_code_button a,dm_config.ws_report_rel_all b
+        WHERE  a.PKID = b.ONCLICK_ID
+        AND a.IDENTITY = #{identity}
+        AND b.TABLE_ID = #{tableId}
+        AND (a.`DISABLE` != 1 OR a.`DISABLE` IS NULL)
+        AND (b.`DISABLE` != 1 OR b.`DISABLE` IS NULL)
+        ORDER BY b.SORT
+    </select>
+
+</mapper>

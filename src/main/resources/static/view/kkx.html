@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可靠性</title>
+</head>
+<script type="text/javascript" src="../js/common/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery-easyui-1.5.5.4/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-easyui-1.5.5.4/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../js/excle/allFunction.js"></script>
+<script type="text/javascript" src="../js/excle/kkx.js"></script>
+<link type="text/css" rel="stylesheet" href="../js/jquery-easyui-1.5.5.4/themes/bootstrap/easyui.css"/>
+<link type="text/css" rel="stylesheet" href="../js/jquery-easyui-1.5.5.4/themes/icon.css"/>
+<link type="text/css" rel="stylesheet" href="../css/common_style.css"/>
+<body>
+
+<!--顶部-->
+<div id="top" class="easyui-panel" style="padding:5px;height: 42px">
+    <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-home'">Home</a>
+    <a href="#" class="easyui-menubutton" data-options="menu:'#form',iconCls:'icon-help'">选择表单</a>
+</div>
+
+
+<!--选择表单-->
+<div id="form">
+    <div onclick="getIformation('可靠性部件清单');">可靠性部件清单</div>
+    <div onclick="getIformation('APU日报');">APU日报</div>
+    <div onclick="getIformation('CMP维修方案更改');">CMP维修方案更改</div>
+    <div onclick="getIformation('不正常事件');">不正常事件</div>
+    <div onclick="getIformation('不正常事件3');">多维表</div>
+    <div onclick="getIformation('APU日报,不正常事件');">两表</div>
+    <div onclick="getIformation('APU日报,不正常事件,CMP维修方案更改');">三表</div>
+    <div onclick="getIformation('APU日报,不正常事件,不正常事件2');">主表+副表</div>
+    <div onclick="getIformation('不正常事件3');">不正常事件3</div>
+    <div onclick="getIformation('可靠性部件清单');">可靠性部件清单</div>
+    <div onclick="getIformation('可靠性部件清单');">可靠性部件清单</div>
+</div>
+
+<!--主表_查询-->
+<div id="div-search2">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'center',fit:true" id="search-condition2">
+            <form id="form-search2">
+                <table id="table-search2">
+                </table>
+            </form>
+            <div style="text-align:center;height: 32px" class="table-search2"></div>
+        </div>
+    </div>
+</div>
+
+<!--导出-->
+<div id="div-export" class="easyui-dialog" title="导出手工模板" closed="true" style="width: 350px;height: 150px">
+    <form id="form-export" name="form-export" enctype="multipart/form-data">
+        <table style="margin: auto;height: 110px">
+            <tr>
+                <td>导出:
+                    <input type="radio" name="export" value=1 checked>数据
+                    <input type="radio" name="export" value=0>模板
+                </td>
+            </tr>
+            <tr>
+                <td align="center" id="exportA" class="export"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<!--导入-->
+<div id="div-import" class="easyui-dialog" title="导入excle数据" closed="true" style="width: 350px;height: 150px">
+    <form id="form-import" name="form-import" enctype="multipart/form-data">
+        <table style="margin: auto;height: 110px">
+            <tr>
+                <td>
+                    <input class="easyui-filebox" id="file" name="file"
+                           data-options="required:true,
+                           buttonText:'请选择要导入的文件',
+                           accept:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel',
+                           buttonAlign:'left'"
+                           style="width:300px;height: 24px">
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center" id="importA" class="import"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<!--查询条件-->
+<div id="div-search" class="easyui-window" title="查询条件" data-options="iconCls:'icon-search'" closed="true"
+     style="width:600px;height:300px;padding:5px;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'east',split:true" style="width:200px" id="search-message">
+            请从左侧框选择条件,点击查询按钮,执行筛选条件,若关闭后,请点击筛选按钮,可再次执行查询功能
+        </div>
+        <div data-options="region:'center'" style="padding:10px;" id="search-condition">
+            <form id="form-search">
+                <table id="table-search">
+                </table>
+            </form>
+        </div>
+        <div data-options="region:'south',border:false" style="text-align:center;height: 32px" class="table-search"></div>
+    </div>
+</div>
+
+<!--编辑表单-->
+<div id="div-dg" class="easyui-dialog" title="编辑表单" closed="true" style="width: 500px;height: 300px">
+    <form id="form-dg" name="form-dg" enctype="multipart/form-data">
+        <div>
+            <table style="margin: auto;" id="table-dg">
+            </table>
+        </div>
+        <div style="text-align:center;height: 32px" class="table-dg"></div>
+    </form>
+</div>
+
+<!--表格-->
+<div id="datagrid"></div>
+
+<!--联动表格-->
+<div id="datagrid2"></div>
+
+<!--菜单-->
+<div id="menu" class="easyui-menu" style="display: none">
+    <div class="m-edit" iconcls="undefined">编辑</div>
+    <div class="m-edit" iconcls="undefined">编辑</div>
+    <div class="m-edit" iconcls="undefined">编辑</div>
+    <div class="m-edit" iconcls="undefined">编辑</div>
+    <div class="m-edit" iconcls="undefined">编辑</div>
+</div>
+
+</body>
+</html>
